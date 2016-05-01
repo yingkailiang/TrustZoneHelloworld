@@ -1,0 +1,28 @@
+SECURE_LOAD 0x60000000 0x100000
+{
+
+  SECURE_EXE +0x0
+  {
+   startup_secure.o(SecureStartUp, +FIRST)
+    * (+RO, +RW,+ZI)
+  }
+
+  ARM_LIB_STACKHEAP  0x600A0000 EMPTY 0x2000   {}
+
+  MON_STACK          0x600C0000 EMPTY 0x1000   {}
+
+  SECURE_PAGETABLES  0x600F0000 EMPTY 0x010000 {}
+
+  BP147_TZPC 0x100E6000 UNINIT                       ; Placing struct that represents the BP147's regs
+  {
+    bp147_tzpc.o (+ZI)
+  }
+}
+
+NORMAL_IMAGE 0x60100000 0x100000
+{
+  NORMAL_IMAGE +0x0
+  {
+    startup_secure.o(NORMAL_IMAGE)
+  }
+}

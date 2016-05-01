@@ -1,0 +1,16 @@
+NORMAL_LOAD 0x60100000
+{
+
+  NORMAL_EXE 0x60100000 0xA0000
+  {
+    startup_normal.o(NormalStartUp, +FIRST)
+    * (+RO, +RW,+ZI)
+  }
+
+  ARM_LIB_STACKHEAP 0x601A0000 EMPTY 0x2000 {}
+
+
+  NORMAL_PAGETABLES 0x601F0000 EMPTY 0x10000
+  {
+  }
+}
