@@ -12,7 +12,7 @@ armlink   --scatter=scatter_normal.txt --entry=normalStart -o normal.axf ./obj/m
 
 fromelf --bin -o normal.bin normal.axf
 
-del .\obj\*.o
+rm .\obj\*.o
 
 armcc  -c --debug --cpu=Cortex-A9.no_neon.no_vfp -I ./headers/ -O1 -o ./obj/main_secure.o     ./src/main_secure.c
 armcc  -c --debug --cpu=Cortex-A9.no_neon.no_vfp -I ./headers/ -O1 -o ./obj/retarget_secure.o ./src/retarget_secure.c
